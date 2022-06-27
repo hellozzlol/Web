@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>속성 선택자</title>
+	<style>
+		ul {
+			list-style: none;
+		}
+		li {
+			width: 120px;
+			display: inline-block;
+			margin: 10px;
+		}
+		li a {
+			padding: 5px 20px;
+			font-size: 14px;
+			color: blue;
+			text-decoration: none;
+		}
+		a[href] {
+			background: yellow;
+		}
+
+		a[name]{
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><a>메인 메뉴 : </a></li>
+		<li><a href="#" name="menu1">메뉴 1</a></li>
+		<li><a href="#" name="menu2">메뉴 2</a></li>
+		<li><a href="#" name="menu3">메뉴 3</a></li>
+		<li><a href="#" name="menu4">메뉴 4</a></li>
+	</ul>
+</body>
+</html>

@@ -4,21 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>넷플리스 대한민국 </title>
+    <title>넷플리스 대한민국 - 인터넷으로  </title>
 </head>
 
 <style>
 body{
     margin: 0;
     width: 100vw;
-   height: 100vh;
-    background:url('images/n1.jpg');
+    height: 100vh;
+    background: linear-gradient(
+            to right,
+            rgba(20, 20, 20, 0) 10%,
+            rgba(20, 20, 20, 0.25) 25%,
+            rgba(20, 20, 20, 0.5) 50%,
+            rgba(20, 20, 20, 0.75) 75%,
+            rgba(20, 20, 20, 1) 100%
+          ), url('https://assets.nflxext.com/ffe/siteui/vlv3/9737377e-a430-4d13-ad6c-874c54837c49/945eec79-6856-4d95-b4c6-83ff5292f33d/KR-ko-20220111-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+        background-size: cover;
+      }
+
+  
+
+section{
+    height: 100vh;
 }
+
+
 h1{
-    color:red;
-    font-size: 60px;
-    font-weight:bold;
+  font-size: 50px;
+  color: red;
 }
+
 
 h2{
     font-size: 60px;
@@ -37,17 +53,63 @@ span{
     text-align: center ;
 }
 
+input[type=search]{
+    
+    width: 500px;
+    height: 50px;
+    font-size: larger;
+    color: grey;
+    margin: 0 auto;
+    text-align: center;
+    display: inline;
+    
+}
+
+button[type=submit]{
+   
+   width: 150px;
+   height: 50px;
+   font-size: larger;
+   color:rgb(255, 255, 255);
+   background-color: red;
+   font-weight: bold;
+   margin:-1px;
+   text-align: center;
+   display: inline;
+  
+}
+
+div{
+    text-align:center;
+    width: 100%;
+    display: block;
+
+}
+
+
+
+
+
+
 
 </style>
 
 
 <body>
-
-    <h1>NETFLIX</h1>
+    
+    <h1><img src="https://i.ibb.co/r5krrdz/logo.png" width="150px"></h1>
     <h2>영화와 시리즈를 <br>
         무제한으로. </h2>
     <h3>다양한 디바이스에서 시청하세요. 언제든 해지하실 수 있습니다. </h3>
     <h3><span>시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.</span></h3>
+
+    
+    
+    <div><input type = "search" title="이메일주소 " size="50"; value="이메일주소 " >
+        <button type="submit" title="시작하기"> 시작하기></button>
+    
+   
+    
 
     
 
