@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>파일업로드</title>
+</head>
+<body>
+	<style>
+form {
+	border: 2px solid rgb(255, 128, 128);
+}
+
+form>label {
+	display: inline-block;
+	width: 25%;
+	background-color: rgb(255, 128, 128);
+}
+
+#memberName {
+	background-color: aqua;
+}
+
+input[name="phone"] {
+	background-color: aqua;
+}
+
+input[name="memberId"] {
+	background-color: rgb(202, 231, 135);
+}
+
+input[name="birth"] {
+	background-color: rgb(66, 208, 233);
+}
+</style>
+	<form action="memberservlet" name="memberFrm" method="post"
+		enctype="multipart/form-data">
+		<label for="memberNo">회원번호</label> <input type="number"
+			name="memberNo" id="memberNo" readonly><br> <label
+			for="memberName">회원이름</label> <input type="text" name="memberName"
+			id="memberName"><br> <label for="phone">연락처</label> <input
+			type="text" name="phone" id="phone"><br> <label
+			for="address">주소</label> <input type="text" name="address"
+			id="address"><br> <label for="birth">생년월일</label> <input
+			type="date" name="birth" id="birth"><br> <label
+			for="image">사진</label> <input type="file" name="image" id="image"><br>
+
+		<input type="submit" value="추가"> <input type="reset"
+			value="초기화"> <input type="button" value="선택삭제" id="deleteSel">
+		<input type="button" value="수정" id="modify">
+
+
+	</form>
+	<div id="show">
+		<table border="1">
+			<thead>
+				<tr>
+					<th>회원번호</th>
+					<th>회원이름</th>
+					<th>연락처</th>
+					<th>주소</th>
+					<th>생년월일</th>
+					<th>사진</th>
+					<th>삭제</th>
+					<th>선택삭제</th>
+
+
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+
+		</table>
+	</div>
+	<script>
+//리스트출력
+let ajax = new XMLHttpRequest();
+ajax.open('get', 'member?cmd=list');
+ajax.send();
+ajax.onload = function (){
+	let data = JSON.parse(this.responseText)
+	
+	let tbody = document.querySelector('#show tbody')
+	data.forEach(member => {
+		tbody.append(makeTr(member));
+	});
+};
+
+let fields = ['membno','membname','membphone','membaddr','membbirth','membImage'];
+
+//회원정보 => tr생성
+	function makeTr(member){
+	console.log(member);
+		let tr = document.createElement('tr');
+		//tr.addEventListener('click', showDetail );
+		tr.setAttribute('id',member.membno);//tr 의 아이디 값 활용
+		//tr.addEventListener('click',showDetail)
+		fields.forEach(field =>{
+			let td =document.createElement('td');
+			//null,0, undefined,''=>false 이외 true
+			td.innerHTML = member[field] ?
+	                (field == 'membImage' ? '<img width = "60px" src = "images/' 
+	                		+ member[field] +'">' : member[field]) : '';
+			tr.append(td);
+		});
+		
+		//삭제버튼.
+		let btn = document.createElement('button');
+		btn.innerHTML= '삭제';
+		//btn.addEventListener('click', rowDelete,false);
+		let td = document.createElement('td');
+		td.append(btn);
+		tr.append(td);
+		//체크박스. input type = 'checkbox'
+		let ck = document.createElement('input');
+		ck.setAttribute('type','checkbox');
+		td = document.createElement('td');
+	
+		td.append(ck);
+		tr.append(td);
+		return tr;
+}
+
+	</script>
+</body>
+</html>
