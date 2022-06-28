@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>promise.html</title>
+</head>
+
+<body>
+    <div id="show">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>회원번호</th>
+                    <th>회원이름</th>
+                    <th>연락처</th>
+                    <th>주소</th>
+                    <th>생년월일</th>
+                    <th>사진</th>
+                    <th>삭제</th>
+                    <th>선택삭제</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+
+        </table>
+    </div>
+    <script>
+        //promise => fetch : pending,fullfilled,rejected,then(),catch()
+        let promise = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve('success'); // 성공처리 실행할 콜백함수.
+            }, 1000);
+        });
+        promise
+            .then(function (result) {
+                console.log(result);
+
+            })
+            .catch(function (error) {
+                console.log(error);
+
+            })
+
+        function asyncwork(value) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    value -= 20
+                    if (value > 50) {
+                        resolve(value)
+                    } else {
+                        reject(value);
+                    }
+
+                }, 1000)
+
+            });
+        }
+        asyncwork(100)
+            .then(function (value) {
+                console.log(value);
+                return asyncwork(value);
+            })
+            .then(function (value) {
+                console.log(value);
+                return asyncwork(value);
+            })
+            .then(function (value) {
+                console.log(value);
+                return asyncwork(value);
+            })
+
+            .catch(function (error) {
+
+                console.log('catch' + error);
+            })
+
+        fetch('member?cmd=list') //JSON
+            .then(function (result) {
+                return result.json(); //text형식=>json형식으로 만들어줌 
+            })
+            .then(function (result) {
+                let tbody = document.querySelector('#show tbody')
+                result.forEach(member => {
+                    tbody.append(makeTr(member));
+                })
+            })
+
+
+            .catch(function (error) {
+                console.log(error);
+            })
+        let fields = ['membno', 'membname', 'membphone', 'membaddr', 'membbirth', 'membimage'];
+        //회원정보 => tr생성
+        function makeTr(member) {
+            console.log(member);
+            let tr = document.createElement('tr');
+            //tr.addEventListener('click', showDetail );
+            tr.setAttribute('id', member.membno); //tr 의 아이디 값 활용
+            //tr.addEventListener('click',showDetail)
+            fields.forEach(field => {
+                let td = document.createElement('td');
+                //null,0, undefined,''=>false 이외 true
+                td.innerHTML = member[field] ? member[field] : (!'' ? field == 'membimage' ? 'no img' : '' :
+                '');
+                tr.append(td);
+
+            })
+
+            //삭제버튼.
+            let btn = document.createElement('button');
+            btn.innerHTML = '삭제';
+            //btn.addEventListener('click', rowDelete,false);
+            let td = document.createElement('td');
+            td.append(btn);
+            tr.append(td);
+            //체크박스. input type = 'checkbox'
+            let ck = document.createElement('input');
+            ck.setAttribute('type', 'checkbox');
+            td = document.createElement('td');
+            td.append(ck);
+            tr.append(td);
+            return tr;
+        }
+    </script>
+</body>
+
+</html>

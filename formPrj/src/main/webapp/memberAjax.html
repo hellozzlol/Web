@@ -79,7 +79,6 @@ input[name="birth"] {
 	ajax.send();
 	ajax.onload = function (){
 		let data = JSON.parse(this.responseText)
-		
 		let tbody = document.querySelector('#show tbody')
 		data.forEach(member => {
 			tbody.append(makeTr(member));
