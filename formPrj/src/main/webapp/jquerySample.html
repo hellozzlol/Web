@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquerySample.html</title>
+<script src="./jquery/jquery-3.6.0.js"></script>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+
+		//자바스크립트 기능 구현 jquery제공하는 api 이용해서 기능구현.
+
+		let ul = document.createElement('ul')
+
+		let li = document.createElement('li')
+		let txt = document.createTextNode('Apple')
+
+		li.append(txt)
+		ul.append(li)
+
+		li = document.createElement('li')
+		
+		txt = document.createTextNode('Banana')
+		li.append(txt)
+		ul.append(li)
+
+		document.getElementById('show').append(ul);
+
+		//jquery방식. $()
+		let ulTag = $('<ul>').append($('<li>').html('Apple') //<li>Apple</li> )
+
+		, $('<li>').html('Banana'));
+
+		$('#show').append(ulTag);
+		$('#show ul:nth-child(3)').remove();
+	})
+</script>
+</head>
+<body>
+	<div id="show">
+		<ul>
+			<li>Apple</li>
+			<li>Banana</li>
+		</ul>
+
+	</div>
+</body>
+</html>

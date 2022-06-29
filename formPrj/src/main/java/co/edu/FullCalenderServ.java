@@ -19,12 +19,13 @@ public class FullCalenderServ extends HttpServlet {
        
    
     public FullCalenderServ() {
-        super();
        
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/json;charset=utf-8");
 		
 		EmpDAO dao = new EmpDAO();
 		List<CalendarVO> schedules =dao.getSchedule();
@@ -36,9 +37,38 @@ public class FullCalenderServ extends HttpServlet {
 	}
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		
-		doGet(request, response);
+		//입력정보 한글포함
+		request.setCharacterEncoding("utf-8");
+		
+		
+		// 파라미터정보: cmd=insert, title=입력한값, start=입력한값, end=입력한값
+	      String cmd, title, start, end;
+	      cmd = request.getParameter("cmd");
+	      title = request.getParameter("title");
+	      start = request.getParameter("start");
+	      end = request.getParameter("end");
+	      
+	      EmpDAO dao = new EmpDAO();
+	      if (cmd.equals("insert")) {
+	         CalendarVO vo = new CalendarVO();
+	         // 사용자 입력값을 vo 셋팅
+	         vo.setTitle(title);
+	         vo.setStartDate(start);
+	         vo.setEndDate(end);
+	         
+	         // 정상적으로 입력처리가 되면
+	         if(dao.insertSchedule(vo)) {
+	            response.getWriter().print("{\"retCode\":\"Success\"}");
+	         }else {
+	            response.getWriter().print("{\"retCode\":\"Fail\"}");
+	         }
+	      }else if (cmd.equals("delete")) {
+	         
+	      }
+	   }
+
 	}
 
-}

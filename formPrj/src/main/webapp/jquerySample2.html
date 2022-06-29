@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jquerySample2.html</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        let data = [{
+            id: 'user1',
+            name: '홍길동',
+            phone: '010-1561-1231',
+            age: 15
+        }, {
+            id: 'user2',
+            name: '박채리',
+            phone: '010-5411-4431',
+            age: 17
+        }, {
+
+            id: 'user3',
+            name: '손석구',
+            phone: '010-8595-8568',
+            age: 28
+        }]
+
+        $(document).ready(function () {
+            let tbody = $('table > tbody');
+            $(data).each((idx, val) => {
+                //tr > td, td, td, td
+                let delBtn = $('<button />').text('삭제')
+                delBtn.on('click',function(){
+                    console.log($(this))
+                    $(this).parent().parent().remove();
+                })
+                tbody.append(
+
+                    $('<tr />').attr('id',val.id)
+                        .append(
+                        $('<td />').text(val.id), //<td>uesr1</td>
+                        $('<td />').text(val.name),
+                        $('<td />').text(val.phone),
+                        $('<td />').text(val.age),
+                        $('<td />').append(delBtn)
+                    )
+                );
+
+            })
+        })
+        //
+        console.log(data)
+        //data.forEach()
+        console.log($(data))
+    </script>
+
+</head>
+
+<body>
+
+
+    <div id="show"></div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>회원아이디</th>
+                <th>회원이름</th>
+                <th>회원연락처</th>
+                <th>회원나이</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+
+    </table>
+
+
+    <style>
+th{
+    text-align: center; 
+    background-color: antiquewhite;
+}
+
+tr{
+    text-align: center;
+}
+    </style>
+
+
+
+</body>
+
+</html>

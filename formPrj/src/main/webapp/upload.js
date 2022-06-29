@@ -2,7 +2,7 @@
  * 
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+ document.addEventListener('DOMContentLoaded', function() {
 
 
 	let tbl = document.querySelector('#show table');
@@ -98,7 +98,7 @@ function rowDelete() {
 		return result.json();
 	})
 	.then(function(result){
-		console.log(result)
+		console.log(result) 
 		//화면에서 지우도록 기능 추가.
 		
 		

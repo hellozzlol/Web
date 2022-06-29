@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jquerySample3.html</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     
+
+    <script>
+    
+    //XMLHttpRequest, fetch : Ajax(비동기)
+    $(document).ready(function(){
+    	//ajax
+    	$.ajax({
+    		url:'./member',
+    		method:'get',
+    		data : 'cmd=list',
+    		dataType : 'json',//xml,html
+    		success : function(result){
+    			console.log(result)
+    			let tbody = $('table > tbody');
+    			$(result).each(function(idx, elem){
+    				//id, name,phone, age:계산.
+    				let today = new Date();
+    				let birth = new Date(elem.membaddr.slice(0, 10));
+    				let age = today.getFullYear() - birth.getFullYear();
+    				console.log(today.getFullYear(),birth.getFullYear())
+
+                    tbody.append(
+    				$('<tr />').append(
+    						$('<td />').text(elem.membno),
+    						$('<td />').text(elem.membname),
+    						$('<td />').text(elem.membphone),
+    						$('<td />').text(elem.membaddr),
+                            $('<td />').append($('<button />').text('삭제'))
+                    ));
+    			});
+    		},
+    		error: function(err){
+    			console.log(err)
+    		}
+    	})
+    });
+    
+    </script>  
+</head>
+
+<body>
+
+
+    <div id="show"></div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>회원아이디</th>
+                <th>회원이름</th>
+                <th>회원연락처</th>
+                <th>회원나이</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+
+    </table>
+
+
+    <style>
+th{
+    text-align: center; 
+    background-color: antiquewhite;
+}
+
+tr{
+    text-align: center;
+}
+    </style>
+
+
+
+</body>
+
+</html>
