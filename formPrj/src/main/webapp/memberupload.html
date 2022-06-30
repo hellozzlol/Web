@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>파일업로드</title>
+<title>도서관리</title>
 
 <body>
 	<style>
@@ -32,23 +32,28 @@ input[name="birth"] {
 	background-color: rgb(66, 208, 233);
 }
 </style>
-<script src="upload.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src = "upload_jquery.js" ></script>
 </head>
 
 	<form action="memberservlet" name="memberFrm" method="post"
 		enctype="multipart/form-data">
 		<label for="memberNo">회원번호</label> 
 		<input type="number"name="memberNo" id="memberNo" readonly><br> 
-		<label for="memberName">회원이름</label> <input type="text" name="memberName"
-			id="memberName"><br> <label for="phone">연락처</label> <input
-			type="text" name="phone" id="phone"><br> <label
-			for="address">주소</label> <input type="text" name="address"
-			id="address"><br> <label for="birth">생년월일</label> <input
-			type="date" name="birth" id="birth"><br> <label
-			for="image">사진</label> <input type="file" name="image" id="image"><br>
+		<label for="memberName">회원이름</label> 
+		<input type="text" name="memberName"id="memberName"><br> 
+		<label for="phone">연락처</label> 
+		<input type="text" name="phone" id="phone"><br> 
+		<label for="address">주소</label> 
+		<input type="text" name="address" id="address"><br> 
+			<label for="birth">생년월일</label> 
+			<input type="date" name="birth" id="birth"><br> 
+			<label for="image">사진</label> 
+			<input type="file" name="image" id="image"><br>
 
 		<input type="submit" value="추가"> <input type="reset"
-			value="초기화"> <input type="button" value="선택삭제" id="deleteSel">
+			value="초기화"> 
+			<input type="button" value="선택삭제" id="deleteSel">
 		<input type="button" value="수정" id="modify">
 
 

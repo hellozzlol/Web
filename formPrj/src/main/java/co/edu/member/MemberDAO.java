@@ -21,7 +21,8 @@ public class MemberDAO extends DAO {
 				mem.setMembno(rs.getInt("memb_no"));
 				mem.setMembname(rs.getString("memb_name"));
 				mem.setMembphone(rs.getString("memb_phone"));
-				mem.setMembaddr(rs.getNString("memb_birth"));
+				mem.setMembbirth(rs.getString("memb_birth"));
+				mem.setMembaddr(rs.getString("memb_addr"));
 				mem.setMembImage(rs.getNString("memb_image"));
 
 				list.add(mem);
@@ -142,7 +143,7 @@ public class MemberDAO extends DAO {
 				mem.setMembname(rs.getString("memb_name"));
 				mem.setMembphone(rs.getString("memb_phone"));
 				mem.setMembaddr(rs.getString("memb_addr"));
-				mem.setMembaddr(rs.getNString("memb_birth"));
+				mem.setMembbirth(rs.getNString("memb_birth"));
 				mem.setMembImage(rs.getNString("memb_image"));
 
 			}
