@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #img1{
+            position: absolute;
+            left : 100px;
+            top : 100px;
+            width: 100px;
+        }
+        #img2{
+            position: absolute;
+            left : 100px;
+            top : 250px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <button id = "btnStart">시작</button>
+    <img src="../images/1.jpg" id = "img1">
+    <img src="../images/3.jpg" id = "img2">
+
+    <script>
+    img1.style.left = "100px";
+    img1.style.top = "100px";
+
+    img2.style.left = "100px";
+    img2.style.top = "250px";
+
+
+     function move(){
+        img1.style.left = parseInt(img.style.left) + 10 + "px"
+        if(parseInt(img1.style.left) > 200){
+            window.clearInterval(timer1);
+            alert("1 winner")
+        }
+     }
+   var timer1;
+   btnStart.addEventListener("click",function(){
+      timer1 = window.setInterval(move,1000)
+
+   })
+    </script>
+</body>
+</html>

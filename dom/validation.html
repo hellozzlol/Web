@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유효성체크</title>
+</head>
+<body>
+    <form name="myForm" action="checkResult.html" 
+    onsubmit="return validateForm()" method="get">
+
+        Name: <input type="text" name="fname"><br>
+        Age: <input type="text" name="age"><br>
+        Job: <select name = "job">
+            <option value=" ">선택</option>
+            <option value="j1">프로그래머</option>
+            <option value="j2">디자이너</option>
+        </select><br>
+
+        Hobby: <input type="checkbox" name="hobby" value="h1">게임
+               <input type="checkbox" name="hobby" value="h2">독서
+               <input type="checkbox" name="hobby" value="h3">운동 <br>
+
+        Mail :<input type="radio" name="yn" value="y">YES
+              <input type="radio" name="yn" value="n">NO <br>
+
+              <input type="submit" value="Submit">
+
+              
+        </form>
+
+        <script>
+            function validateForm(){
+                //체크박스
+                if(myForm.job.value ==""){
+                    alert("적어도 한개 이상은 선택해주세요")
+                    return false;
+                }
+                //select 체크
+                let job = document.getElementById('job');
+                if(job == ""){
+                    alert("직업을선택하세요")
+                    return false;
+                }
+
+                //이름 입력여부
+                let fname = myForm.fname.value ;
+                if(fname == ""){
+                    alert("이름을 입력하세요")
+                    return false;
+                  
+                }
+
+                //나이 입력 체크
+                let age = myForm.age.value ;
+                if(age == ""){
+                    alert("나이를 입력하세요")
+                    return false;
+                }
+
+                //이메일 수신여부
+
+
+
+                return ture;
+                }
+
+
+
+
+              
+
+
+
+        </script>
+</body>
+</html>

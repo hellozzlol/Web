@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+    <input id="txtWord">
+    <button type="button" id="btnAdd">추가</button>
+    <p class="word" onclick="cssChange()">list</p>
+    <p class="word" onclick="cssChange()">nice</p>
+    <p class="word" onclick="cssChange()">good</p>
+    <p class="word" onclick="cssChange()">very</p>
+
+
+   
+    <script>
+        //추가버튼 클릭하면 input태그의 값을 p태그 만들어서 추가
+        btnAdd.addEventListener("click", function(){
+            let t1 = document.createElement("p")
+            t1.setAttribute("id","btnAdd")
+            t1.innerHTML=txtWord.value
+            document.body.appendChild(t1);
+    
+        })
+
+    
+        
+        //p태그를 클릭하면 배경색 변경
+    // function cssChange()
+    //{let sp1 = document.getElementsByClassName("word")[0];
+    // sp1.style.fontSize = "25px"; 
+    //  sp1.style.color = "blue";}
+
+    let p = document.getElementsByClassName("word");
+
+    for(i=0; i<p.length; i++){
+        p[i].addEventListener("click",function(cssChange){
+            this.style.fontSize = "25px"; 
+            this.style.color = "blue";
+         })
+     }
+
+    
+
+    
+
+
+    </script>
+</body>
+</html>

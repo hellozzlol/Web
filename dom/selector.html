@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 요소선택</title>
+    <style>
+        .book{
+            color : blue;
+            font-size : 2em;
+        }
+        .hi{
+            background-color: gray;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="first">자바</div>
+    <div >스프링</div>
+    <div >JSP</div>
+    <div>자바스크립트</div>
+    <div><input name="writer" id="writer"></div>
+    <img src="../images/2.png" id="image">
+    <script>
+
+        //모든 div 태그에 book클래스 추가
+        let divs = document.getElementsByTagName("div");
+
+        
+        //for(i=0 ; i<divs.length; i++){
+          //  divs[i].classList.add("book")
+
+        //}
+
+
+        for(d of divs){
+            d.classList.add("book");
+        }
+
+
+
+
+        
+    </script>
+    
+</body>
+</html>

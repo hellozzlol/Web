@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+</head>
+<body>
+    <div><span>java</span><button type = "button" class = "btn">선택</button></div>
+    <div><span>spring</span><button type = "button" class = "btn">선택</button></div>
+    <div><span>javascript</span><button type = "button" class = "btn">선택</button></div>
+
+    <script>
+        //1. class가 btn 인  태그 찾기
+       let b1= document.getElementsByClassName("btn");
+
+        //2.태그 수 만큼 for문 돌리기
+        for(i=0; i<b1.length; i++){
+            b1[i].addEventListener("click", function(){
+                //window.event.tager
+              // let spanText = this.previousElementSibling.innerHTML;
+              let spanText = this.closest("tr").firstElementChild.innerHTML;
+              console.log(spanText);
+                alert(spanText);
+            })
+
+        }
+
+    </script>
+</body>
+</html>

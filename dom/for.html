@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>90</td>
+            <td>60</td>
+            <td>100</td>
+            <td>90</td>
+            <td>70</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>100</td>
+            <td>70</td>
+            <td>90</td>
+            <td>95</td>
+            <td>74</td>
+            <td></td>
+
+        </tr>
+    </table>
+
+    <script>
+                // let total = 0;
+        // let tds = document.getElementsByTagName("td");
+        // //for 합계 계산
+        // for(t of tds){
+        //    total += parseInt(td.innerHTML)
+        // }
+        // //결과 출력 console.log(total)
+        // console.log(total)
+
+
+
+        
+        //for 합계 계산
+        // for(tr of trs){
+            //     let total = 0;
+            //     let tds = tr.getElementsByTagName("td");
+            
+            //     for(td of tds){
+                
+                //         total += parseInt(td.innerHTML)
+                
+                //     }      
+                //     //결과 출력 console.log(total)
+                //     console.log(total)
+                
+                // }
+                
+        let trs = document.getElementsByTagName("tr");
+
+        for (i=0; i<trs.length; i++){
+            let total = 0;
+            let tds = trs[i].getElementsByTagName("td");
+            
+            //for 합계
+            for(j=0; j<tds.length-1; j++){
+                total += parseInt(tds[j].innerText);
+            }
+           //console.log(total)
+
+           tds[tds.length-1].innerText = total
+        }
+    </script>
+</body>
+</html>
