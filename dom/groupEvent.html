@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>groupEvent</title>
+    <script>
+        window.addEventListener("load",function(){ //$(function(){})
+        //추가 버튼에 핸들러
+            btn.addEventListener("click",function(){
+               //let t1 = document.createElement("div")
+               // t1.innerHTML=txt.value
+                result.innerHTML += `<p class="adddiv">${txt.value}</p>`;
+            })
+            
+            // div 클릭핸들러 
+        //     let divs = document.getElementsByClassName("adddiv") //Collection, noArray
+        //     for (i = 0; i<divs.length; i++){
+        //         divs[i].addEventListener("click",function(adddiv){
+        //             this.style.backgroundColor = "skyblue";
+        //         })
+
+
+        //     }
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        
+        // div 클릭핸들러 (그룹함수)
+        result.addEventListener("click",function(){
+            //if(event.target.classList.contains("adddiv")){ //add,remove,togle
+                if(event.target.tagName == 'P'){
+                    event.target.style.backgroundColor = "skyblue";
+                }
+                console.log(event.target);
+            })
+            
+        })
+
+
+//divs.arrays.forEach(ele => {
+//ele.addEventListener("click")
+//})
+
+//for (div of divs)
+    </script>
+</head>
+<body>
+    <input id = "txt"><button type = "button" id="btn">추가</button><br>
+    <div id = "result">
+        <p class="adddiv">취업</p>
+    </div>
+
+</body>
+</html>

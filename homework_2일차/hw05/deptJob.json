@@ -1,0 +1,190 @@
+{
+    "jobs": [
+        {
+            "job_title": "Public Accountant",
+            "job_id": "AC_ACCOUNT"
+        },
+        {
+            "job_title": "Accounting Manager",
+            "job_id": "AC_MGR"
+        },
+        {
+            "job_title": "Administration Assistant",
+            "job_id": "AD_ASST"
+        },
+        {
+            "job_title": "President",
+            "job_id": "AD_PRES"
+        },
+        {
+            "job_title": "Administration Vice President",
+            "job_id": "AD_VP"
+        },
+        {
+            "job_title": "Accountant",
+            "job_id": "FI_ACCOUNT"
+        },
+        {
+            "job_title": "Finance Manager",
+            "job_id": "FI_MGR"
+        },
+        {
+            "job_title": "Human Resources Representative",
+            "job_id": "HR_REP"
+        },
+        {
+            "job_title": "Programmer",
+            "job_id": "IT_PROG"
+        },
+        {
+            "job_title": "Marketing Manager",
+            "job_id": "MK_MAN"
+        },
+        {
+            "job_title": "Marketing Representative",
+            "job_id": "MK_REP"
+        },
+        {
+            "job_title": "Public Relations Representative",
+            "job_id": "PR_REP"
+        },
+        {
+            "job_title": "Purchasing Clerk",
+            "job_id": "PU_CLERK"
+        },
+        {
+            "job_title": "Purchasing Manager",
+            "job_id": "PU_MAN"
+        },
+        {
+            "job_title": "Sales Manager",
+            "job_id": "SA_MAN"
+        },
+        {
+            "job_title": "Sales Representative",
+            "job_id": "SA_REP"
+        },
+        {
+            "job_title": "Shipping Clerk",
+            "job_id": "SH_CLERK"
+        },
+        {
+            "job_title": "Stock Clerk",
+            "job_id": "ST_CLERK"
+        },
+        {
+            "job_title": "Stock Manager",
+            "job_id": "ST_MAN"
+        }
+    ],
+    "depts": [
+        {
+            "department_name": "Administration",
+            "department_id": "10"
+        },
+        {
+            "department_name": "Marketing",
+            "department_id": "20"
+        },
+        {
+            "department_name": "Purchasing",
+            "department_id": "30"
+        },
+        {
+            "department_name": "Human Resources",
+            "department_id": "40"
+        },
+        {
+            "department_name": "Shipping",
+            "department_id": "50"
+        },
+        {
+            "department_name": "IT",
+            "department_id": "60"
+        },
+        {
+            "department_name": "Public Relations",
+            "department_id": "70"
+        },
+        {
+            "department_name": "Sales",
+            "department_id": "80"
+        },
+        {
+            "department_name": "Executive",
+            "department_id": "90"
+        },
+        {
+            "department_name": "Finance",
+            "department_id": "100"
+        },
+        {
+            "department_name": "Accounting",
+            "department_id": "110"
+        },
+        {
+            "department_name": "Treasury",
+            "department_id": "120"
+        },
+        {
+            "department_name": "Corporate Tax",
+            "department_id": "130"
+        },
+        {
+            "department_name": "Control And Credit",
+            "department_id": "140"
+        },
+        {
+            "department_name": "Shareholder Services",
+            "department_id": "150"
+        },
+        {
+            "department_name": "Benefits",
+            "department_id": "160"
+        },
+        {
+            "department_name": "Manufacturing",
+            "department_id": "170"
+        },
+        {
+            "department_name": "Construction",
+            "department_id": "180"
+        },
+        {
+            "department_name": "Contracting",
+            "department_id": "190"
+        },
+        {
+            "department_name": "Operations",
+            "department_id": "200"
+        },
+        {
+            "department_name": "IT Support",
+            "department_id": "210"
+        },
+        {
+            "department_name": "NOC",
+            "department_id": "220"
+        },
+        {
+            "department_name": "IT Helpdesk",
+            "department_id": "230"
+        },
+        {
+            "department_name": "Government Sales",
+            "department_id": "240"
+        },
+        {
+            "department_name": "Retail Sales",
+            "department_id": "250"
+        },
+        {
+            "department_name": "Recruiting",
+            "department_id": "260"
+        },
+        {
+            "department_name": "Payroll",
+            "department_id": "270"
+        }
+    ]
+}

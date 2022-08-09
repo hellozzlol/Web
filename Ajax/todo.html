@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  min-width: 250px;
+}
+
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+  background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Style the header */
+.header {
+  background-color: #f44336;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+/* Clear floats after the header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the input */
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+</style>
+</head>
+<body>
+
+<div id="myDIV" class="header">
+  <h2 style="margin:5px">My To Do List</h2>
+  <input type="text" id="myInput" placeholder="Title...">
+  <span class="addBtn">Add</span>
+</div>
+
+<ul id="myUL">
+<!--<li data-no="1">취업<span class="close">x</span></li>-->  
+</ul>
+
+<script>
+    //전체조회 
+    var url ='http://localhost/myserver/todoSelect';
+     fetch(url)
+     .then(res => res.json())
+     .then(obj=>{
+        for(t of obj){
+
+            var checked = "";
+            if(obj.todoyn == "1"){
+            }
+            myUL.innerHTML+=`<li ${checked} data-no=${t.no}>${t.contents}
+                <span class="close">x</span></li>`
+            }
+     })
+
+
+//추가버튼 핸들러
+document.querySelector(".addBtn").addEventListener("click",function(){
+    url = "http://localhost/myserver/todoInsert?contents="+ myInput.value ;
+    //ajax 등록요청하고 응답이오면 태그 만들어서 추가
+    fetch(url) //ajax 등록요청
+    .then(res => res.json()) //json 변환
+    .then(obj=> {
+        //li태그 추가
+        myUL.innerHTML+=`<li data-no=${obj.no}>${obj.contents}<span class="close">x</span></li>`
+
+    }) 
+})
+
+//삭제버튼 핸들러(그룹이벤트)
+//ajax 삭제 요청하고 응답이오면 해당 li 태그 삭제
+myUL.addEventListener("click",function(){
+    var span = event.target;
+    var no = span.parentElement.getAttribute("data-no");  //span의 부모태그의 data-no속성 찾아오기
+    if(span.tagName == "SPAN"){
+        url = "http://localhost/myserver/todoDelete?no=" + no;
+        fetch(url)
+        .then(res => res.json())
+        .then(obj => {
+            //span 의 부모를 삭제
+            span.parentElement.remove();
+        })
+    }
+
+
+})
+//상태변경 핸들러(그룹이벤트) (과제)
+//ajax 변경요청하고 응답이오면 해당 li 태그 checked 클래스 토글
+
+
+myUL.addEventListener("click",function(){
+    var li = event.target;
+    var yn = li.classList.contains("checked") ? 0 : 1; //span의 부모태그의 data-no속성 찾아오기
+    var no = li.getAttribute("data-no");
+    
+    if(li.tagName == "LI"){
+        url = "http://localhost/myserver/todoUpdate?no="+no+"&todoyn="+yn;
+        fetch(url)
+        .then(res => res.json())
+        .then(obj => {
+            li.classList.toggle("checked");
+           
+        })
+    }
+
+
+})
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .req {
+            color: red
+        }
+
+        label {
+            display: inline-block;
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>사원등록</h2>
+
+    <form name="frm" action="empInsert" method="post" onsubmit="return validateForm()">
+        <div><label>employeeId<span class="req">*</span></label>
+            <input name="employeeId">
+        </div>
+        <div><label>firstName</label>
+            <input name="firstName">
+        </div>
+        <div><label>lastName<span class="req">*</span></label>
+            <input name="lastName">
+        </div>
+        <div><label>email<span class="req">*</span></label>
+            <input name="email">
+        </div>
+        <div><label>hireDate<span class="req">*</span></label>
+            <input name="hireDate">
+        </div>
+        <div><label>department_id</label>
+            <span id="deptList"> <input type="radio" value="100">Finance</span>
+        </div>
+        <div><label>jobId<span class="req">*</span></label>
+            <select name="jobId">
+                <option value="">선택
+                <option value="MK_MAN">Marketing Manager
+            </select>
+        </div>
+        <div><label>manager_id</label>
+            <select name="managerId">
+                <option value="">선택
+                <option value="100">100 king
+            </select>
+        </div>
+        <button>등록</button>
+    </form>
+</body>
+</html>

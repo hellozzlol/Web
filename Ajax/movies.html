@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input>
+    <button type="button" id ="btn">영화 박스 오피스</button>
+    <div id="result">
+        <div><span></span> <span></span></div>
+    </div>
+    <script>
+      
+            btn.addEventListener("click",function(){
+                let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=20220808";
+                fetch(url)
+                .then(res => res.json())
+                .then(obj => {
+                    for(t of obj.boxOfficeResult.dailyBoxOfficeList)
+                    result.innerHTML+=
+                    `<tr>
+                        <td>${t.rank}위</td><br>
+                        <td> ${t.movieNm} </td><br>
+                    </tr>`
+                    //console.log(obj.boxOfficeResult.dailyBoxOfficeList[0].movieNm)
+                })
+
+            })
+       
+    </script>
+</body>
+</html>

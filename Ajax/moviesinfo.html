@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input>
+    <button type="button" id ="btn">영화 박스 오피스</button>
+    <div id="result">
+        <div><span class="code">배우</span> <span class="cast">역할</span></div>
+    </div>
+    <script>
+      
+            btn.addEventListener("click",function(){
+                let url = "	http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd=20200809";
+                fetch(url)
+                .then(res => res.json())
+                .then(obj => {
+                    console.log(obj.movieInfoResult.movieInfo.actors);
+                    
+                    let list = obj.movieInfoResult.movieInfo.actors
+                    
+                     for(i of list )
+                    result.innerHTML +=  `<tr>
+                        <td>${i.peopleNm}</td>
+                        <td>${i.cast}</td><br>
+                 </tr>`
+               
+                    
+                })
+               
+
+            })
+       
+    </script>
+</body>
+</html>

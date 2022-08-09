@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>post</title>
+
+    <script>
+        window.addEventListener("load",function(){
+            btn.addEventListener("click",loadDoc)
+        })
+
+
+    function loadDoc() {
+    const ajax = new XMLHttpRequest(); //1. XMLHttpRequest 객체 생성
+    const url = "https://jsonplaceholder.typicode.com/posts"; //2. 서버 URL
+    ajax.onload = function() { //3. 응답을 처리하는 콜백 함수
+    //
+    let obj = JSON.parse(ajax.response);
+    //console.log(obj[0].title)
+    for(t of obj)
+    list.innerHTML+=
+    `<tr>
+            <td>${t.id}</td>
+            <td> ${t.title} </td>
+            <td> ${t.userid} </td>
+        </tr>`
+
+    };
+     ajax.open("GET", url);
+     ajax.send(); //7. 전송을 시작
+    }
+   
+    </script>
+
+</head>
+
+<body>
+    <h3>post</h3>
+    <button type="button" id="btn">ajax 요청</button>
+    <table>
+        <thead>
+             <tr>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+             </tr>
+        </thead>
+    <tbody id="list">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+    </table>
+    
+</body>
+</html>

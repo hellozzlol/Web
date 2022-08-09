@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json</title>
+</head>
+<body>
+    <script>
+        var obj = new Object();
+        obj.name = '홍길동';
+        obj.age = 20;
+        console.dir(obj);
+
+        //{}
+        var obj2 = {};
+        obj2.name="이순신"
+        obj2.age = 20;
+        console.dir(obj2);
+
+
+        var obj3 = { name:"강태오",age:29} //객체상수
+        console.dir(obj3);
+
+        var arr1 = [
+            obj,obj2
+        ];
+
+        arr1.push(obj3)
+        console.dir(arr1);
+
+        var arr2 = [
+            {name:"홍길동",age:30, hobby : ['ski','드라마보기']},
+            {name:"강태오",age:29, hobby : ['ski','드라마보기']
+         }
+        ]
+
+        var arr3 = {
+            paging : { page : 1, total : 20},
+            datas : [{no:1 ,title:'JAVA'},
+                        {no:2 ,title:'PHP'}
+                    ]
+            }
+            //첫번째 타이틀만 출력
+            console.dir(arr3.paging.datas.page);
+           //타이틀만 모두 출력
+           console.dir(arr3.paging.datas.page);
+
+
+
+    </script>
+</body>
+</html>

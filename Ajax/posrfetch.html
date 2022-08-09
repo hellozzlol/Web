@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>postfetch</title>
+
+    <script>
+        window.addEventListener("load",function(){
+            btn.addEventListener("click",loadDoc)
+        })
+
+//이 구조 외우기
+    function loadDoc() {
+  
+    const url = "https://jsonplaceholder.typicode.com/posts"; //2. 서버 URL
+    fetch(url)
+    .then(res=> res.json())
+    .then(obj => {
+        for(t of obj)
+    list.innerHTML+=
+    `<tr>
+            <td>${t.id}</td>
+            <td> ${t.title} </td>
+            <td> ${t.userid} </td>
+        </tr>`
+
+    
+    })
+}
+   
+    </script>
+
+</head>
+
+<body>
+    <h3>post</h3>
+    <button type="button" id="btn">ajax 요청</button>
+    <table>
+        <thead>
+             <tr>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+             </tr>
+        </thead>
+    <tbody id="list">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+    </table>
+    
+</body>
+</html>
