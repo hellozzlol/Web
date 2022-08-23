@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <style>
+        .highlight{
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+ 
+    <input id="txtWord">
+    <button type="button" id="btnAdd">추가</button>
+    <div>
+    <p class="word">list</p>
+    <p class="word">nice</p>
+    <p class="word" >good</p>
+    <p class="word">very</p>
+    </div>
+
+
+   
+    <script>
+        //추가버튼 클릭하면 input태그의 값을 p태그 만들어서 추가
+        //val(),css()
+        //p태그를 클릭하면 배경색 변경
+
+        $("#btnAdd").on("click",function(){
+          $("<p>").addClass("word").html($("#txtWord").val())
+           .appendTo($("div"));
+            $("#txtWord").val("")
+        })
+
+    
+        
+        //p태그를 클릭하면 배경색 변경
+    // function cssChange()
+    //{let sp1 = document.getElementsByClassName("word")[0];
+    // sp1.style.fontSize = "25px"; 
+    //  sp1.style.color = "blue";}
+
+  
+        $("div").on("mouseover",'p',function(){
+            //$(this).css("backgroundColor","skyblue")
+            $(this).toggleClass("highlight");
+         })
+   
+
+    
+
+    
+
+
+    </script>
+</body>
+</html>

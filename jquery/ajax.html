@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <button id="btn">등록</button>
+    <script>
+        // $.post(url,
+        // {contents : 'todo test'} ,
+        // function(obj){console.dir(obj)});
+
+        //비동기식
+    //     $.ajax(url,{
+    //         method : "post" ,
+    //         data : {contents : 'BYE'} ,
+    //     }).done(obj =>{
+    //         console.dir(obj)
+    //     })
+    //     console.dir("요청")
+    // })
+
+    //동기식
+
+    // $.ajax(url,{
+    //         async : false,
+    //         method : "post" ,
+    //         data : {contents : '잘가'} ,
+    //     }).done(obj =>{
+    //         console.dir(obj)
+    //     }).fail((xhr,statusText)=> {
+    //         console.dir(statusText)
+    //         console.dir(xhr)
+    //     });
+    //     console.dir("요청")
+    // })
+        $("#btn").on("click",function(){
+            let url = "http://localhost/myserver/todoInsert"
+        $.ajax(url,{
+                method : "post" ,
+                data : {contents : '잘가'} ,
+            }).done(function(obj,status,xhr){
+                console.log(obj)
+            });
+           
+        })
+
+        //무조건 암기
+        // $.ajax(url,{
+        //         async : false,
+        //         method : "post" ,
+        //         data : {contents : '잘가'} ,
+        //     }).done(obj =>{
+        //         console.dir(obj)
+        //     })
+       
+
+    </script>
+    
+</body>
+</html>

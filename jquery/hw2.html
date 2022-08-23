@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>이름</th>
+            <th>국어</th>
+            <th>영어</th>
+            <th>선택</th>
+        </tr>
+        <tr>
+            <td>영희</td>
+            <td>100</td>
+            <td>90</td>
+            <td><button type = "button" class = "btn">선택</button></td>
+        </tr> 
+        <tr>
+            <td>철수</td>
+            <td>50</td>
+            <td>100</td>
+            <td><button type = "button" class = "btn">선택</button></td>
+        </tr>
+        <tr>
+            <td>길동</td>
+            <td>90</td>
+            <td>90</td>
+            <td><button type = "button" class = "btn">선택</button></td>
+        </tr>
+    </table>
+    <script>
+        //버튼을 클릭하면 선택한 행의 학생이름 출력
+        //1. class가 btn 인  태그 찾기
+
+        let b1 = document.getElementsByClassName("btn");
+
+        //2.태그 수 만 큼 for문 돌리기
+        for(button of b1){
+          button.addEventListener("click",function(){
+              let spanText = this.closest("tr").firstElementChild.innerHTML;
+              alert(spanText)
+              console.log(spanText);
+
+          })
+            
+
+        }
+        
+
+    </script>
+</body>
+</html>

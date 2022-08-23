@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector2</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <table border="1"> 
+        <tr>
+            <td id="td1" data-name="park">1</td>
+            <td>2</td>
+            <td>3</td>
+            <td><button type="button" class="btn">조회</button></td>
+        </tr>
+        <tr>
+            <td data-name="so">5</td>
+            <td>6</td>
+            <td>7</td>
+            <td><button type="button" class="btn">조회</button></td>
+        </tr>
+        <tr>
+            <td data-name="hyeon">9</td>
+            <td>10</td>
+            <td>11</td>
+            <td><button type="button" class="btn">조회</button></td>
+        </tr>
+    </table>
+    <script>
+        //버튼이벤트 : 클릭한 버튼의 첫번째 td의 내용을 출력
+        $(".btn").on("click",function(){
+            //let t = $(this).closest("tr").children().first().html()
+            //let t = $(this).closest("tr").find("td:first").html()
+            //let t = $(this).closest("tr").find("td").first().html()
+            //let t = $(this).closest("tr").find("td").first().attr("data-name")
+            let t = $(this).closest("tr").find("td").first().data("name");
+
+            alert(t)
+
+            console.log(t)
+        })
+    </script>
+</body>
+</html>

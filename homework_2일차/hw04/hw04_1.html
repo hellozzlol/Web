@@ -50,7 +50,31 @@
   </div>
 </div>
 <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
 
+//직접이벤트를 주는 것 
+// for(i=0; i<acc.length; i++){
+//   acc[i].addEventListener("click",function(){
+//     this.classList.toggle("active");
+//     this.nextElementSibling.classList.toggle("panel");
+//   })
+// }
+
+container.addEventListener("click",function(){
+  //this : event 핸들러가 지정된 태그
+  //event.target : 이벤트가 발생한 태그
+
+  console.log(this)
+  console.log(event.target)
+
+  //그룹이벤트를 주는 것 
+  let tag = event.target;
+  if(tag.tagName == "BUTTON"){
+    tag.classList.toggle("active")
+    tag.nextElementSibling.classList.toggle("panel");
+  }
+})
 </script>
 </body>
 </html>

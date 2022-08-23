@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plugin(widget)</title>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(function () {
+                    //페이지 로드 이벤트랑 같음.
+                    //제이쿼리 사이트 가면 api도큐먼트 있는데 거기서 원하는 거 찾아서 넣으면 됩니다요!
+                    //아코디언
+                    $("#accord").accordion({
+                        active: 1,
+                        animate: 1000,
+                        collapsible: true, //트루면 클릭했을때 접히고 false하면 클릭했을때 안접힘 ^^
+                        heightStyle: "content",
+                        activate: function (ev, ui) {
+                            console.log(ui.newHeader.data("id"))
+                            // console.log(ui.newHeader.attr("id"))
+                        }
+
+
+                    });
+
+                    //데이트 피커
+                    $("#sdt").datepicker({
+                        dateFormat: 'yy/mm/dd',
+                        minDate: "-1w", //-7도가능
+                        maxDate: "+1M +10D", //new Date(해서 직접 날짜지정가능)
+                        onSelect: function (dt, obj) {
+                            console.log(dt);
+                            console.dir(obj.currentDay);
+                        }
+                    });
+
+                    //모달 부분 
+
+                    let popup = $("#dialog").dialog({
+                        autoOpen: false,
+                        modal: true,
+                        open: function (event, ui) {
+                            console.log("오픈")
+                        },
+                        buttons: {
+                            'save': function () {},
+                            'close': function () {}
+                        },
+                    });
+                    $("#btn").on("click", function () {
+                        popup.dialog("open");
+                    })
+
+                    //데이터 테이블
+
+                    let empDt= $('#myTable').DataTable({
+                        ajax: {
+                            url: 'http://localhost/myserver/empSelect',
+                            dataSrc: ''
+                        },
+                        columns: [
+                            { data: 'employee_id' },
+                            { data: 'first_name' },
+                            { data: 'salary' },
+                            { data: 'job_id' },
+                            
+                        ]
+
+                    });
+                    
+                    //데이터타입에 이벤트를 걸때
+                    empDt.on("select",function( e, dt, type, indexes ){
+                        console.log(type)
+                        console.log(indexes)
+                    });
+                })
+    </script>
+</head>
+
+<body>
+    <div id="accord">
+        <h3 data-id="java">java</h3>
+        <div>
+            <button id="btn">등록</button>
+            <input>
+        </div>
+
+
+        <h3 data-id="css">CSS</h3>
+        <div>
+            <table id="myTable">
+                <thead>
+                    <tr>
+                        <td>번호</td>
+                        <td>이름</td>
+                        <td>급여</td>
+                        <td>직무</td>
+                    </tr>
+                </thead>
+
+                <tbody></tbody>
+
+            </table>
+
+
+
+        </div>
+    </div>
+
+
+    <div id="dialog" title="카카오톡">
+        <input id="sdt">
+        <input> :ID
+        <input> :NAME
+    </div>
+
+</body>
+
+</html>

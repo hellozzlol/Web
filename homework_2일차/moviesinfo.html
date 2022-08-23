@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <input>
+    <input id = "text" type="text">
     <button type="button" id ="btn">영화 박스 오피스</button>
     <div id="result">
         <div><span class="act">배우이름 </span> <span class="cast">배역</span></div>
@@ -16,7 +16,7 @@
       //20194376
       //20124079
             btn.addEventListener("click",function(){
-                let url = "	http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd=20124079";
+                let url = "	http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd="+text.value;
                 fetch(url)
                 .then(res => res.json())
                 .then(obj => {

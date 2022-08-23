@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event_stop</title>
+
+    <style>
+        div{
+            border: 1px solid blue;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent"> A
+        <div id="my">B
+            <div id="child">C</div>
+            <a  id="naver" href="http://www.naver.com">네이버</a>
+        </div>
+    </div>
+    <script>
+        parent.addEventListener("click",function(e){alert("A")})
+        my.addEventListener("click",function(e){alert("B")})
+        child.addEventListener("click",function(e){alert("C"); e.stopPropagation();})
+        naver.addEventListener("click",function(e){
+            e.stopPropagation();
+            if(! confirm("이동할까요?")){
+                e.PreventDefault(); //a, submit
+
+            }
+        })
+
+    </script>
+</body>
+</html>

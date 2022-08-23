@@ -1,0 +1,82 @@
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="./images/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pete's Pet Shop</title>
+
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-push-2">
+          <h1 class="text-center">Pete's Pet Shop</h1>
+          <hr/>
+          <br/>
+        </div>
+      </div>
+
+      <div id="petsRow" class="row"></div>
+      
+
+    <div id="petTemplate" style="display: none;">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="panel panel-default panel-pet">
+          <div class="panel-heading">
+            <h3 class="panel-title">Scrappy</h3>
+          </div>
+          <div class="panel-body">
+            <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src="./images/golden-retriever.jpeg" data-holder-rendered="true">
+            <br/><br/>
+            <strong>Breed</strong>: <span class="pet-breed">Golden Retriever</span><br/>
+            <strong>Age</strong>: <span class="pet-age">3</span><br/>
+            <strong>Location</strong>: <span class="pet-location">Warren, MI</span><br/><br/>
+            <button class="btn btn-default btn-adopt" type="button" disabled="disabled" data-id="0">Adopt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <script>
+       //let price = prompt("분양가")
+       petList();
+       function petList(){
+           fetch("http://localhost/myserver/petSelect")
+           .then(res=>res.json())
+           .then(objs => {
+               for(obj of objs){
+                //petTemplate.getElementsByClassName("panel-title")[0]
+                petTemplate.querySelector(".panel-title").innerHTML = obj.name;
+                petTemplate.querySelector("img").src = obj.picture; //표준속성
+                petTemplate.querySelector(".btn-adopt").setAttribute("data-id",obj.id); //커스텀속성
+                petTemplate.querySelector(".pet-breed").innerHTML = obj.breed;
+                petTemplate.querySelector(".pet-age").innerHTML = obj.age;
+                petTemplate.querySelector(".pet-location").innerHTML = obj.location;
+                
+
+                //분양여부에 따라서 버튼 비활성화하기.
+                if(obj.adopt == null ){
+                    //버튼 내용을 'Adopted' 변경
+                    //disabled 속성변경
+                    //Adopted
+                    petTemplate.querySelector(".btn-adopt").removeAttribute("disabled")
+                    petTemplate.querySelector(".btn-adopt").innerHTML = "Adopt"
+                   // disable속성변경
+                }else {
+                    petTemplate.querySelector(".btn-adopt").setAttribute("disabled","disabled")
+                    petTemplate.querySelector(".btn-adopt").innerHTML = "Adopted"
+                }
+                petsRow.innerHTML += petTemplate.innerHTML;
+               }
+           })
+       }
+   </script>
+	
+  </body>
+</html>
